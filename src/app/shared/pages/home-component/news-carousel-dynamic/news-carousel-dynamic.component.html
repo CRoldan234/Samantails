@@ -1,0 +1,146 @@
+<div class="title-container">
+  <h1 class="title-news">
+    {{ carouselTitle }}
+  </h1>
+</div>
+
+<div class="swiper {{ carouselId }}">  
+  <div class="swiper-button-prev swiper-button-prev-{{ carouselId }}">
+    <i class="ri-arrow-left-s-line"></i>
+  </div>
+  <div class="swiper-button-next swiper-button-next-{{ carouselId }}">
+    <i class="ri-arrow-right-s-line"></i>
+  </div>
+
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" *ngFor="let item of newsItems">
+      <div class="card" (click)="navigateToNews(item.id)">
+        <div class="card-content">
+          <div class="image-container">
+            <img [src]="getImageSource(item)" [alt]="item.title" />
+            <div class="new-badge">{{ carouselType === 'services' ? 'SERVICIO' : 'NUEVO' }}</div>
+          </div>
+          <div class="price-badge">Precio: {{ item.price }}</div>
+          <div class="card-text">
+            <h3 class="title">{{ item.title }}</h3>
+            <p class="summary">{{ item.summary }}</p>
+            <div class="card-buttons">
+              <button class="category-tag">{{ item.category }}</button>
+              <button class="source-tag">{{ item.source }}</button>
+            </div>
+            <div class="card-details">
+              <div class="rating" *ngIf="item.rating">
+                ⭐ {{ item.rating }}
+              </div>
+              <div class="duration" *ngIf="item.duration">
+                ⏱️ {{ item.duration }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="swiper-pagination swiper-pagination-{{ carouselId }}"></div>
+</div>
+
+<hr class="section-divider">
+
+<!-- Sección de Categorías -->
+<section class="categories-section">
+  <h2 class="categories-title">Categorías</h2>
+  <div class="categories-container">
+    <div class="category-circle" *ngFor="let category of categories">
+      <div class="circle-icon">
+        <img [src]="category.icon" [alt]="category.name">
+      </div>
+      <span class="category-name">{{ category.name }}</span>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="brands-section">
+  <h2 class="brands-title">Marcas Destacadas</h2>
+  <div class="brands-container">
+    <div class="brand-square" *ngFor="let brand of brands">
+      <div class="square-logo">
+        <img [src]="brand.logo" [alt]="brand.name">
+      </div>
+      <span class="brand-name">{{ brand.name }}</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-main">
+      <div class="footer-logo-section">
+        <div class="footer-logo">
+          <img src="assets/img/Samantha.png" alt="SamanTails Logo" class="logo">
+        </div>
+        <div class="contact-info">
+          <p class="contact-item">
+            <strong>Teléfono:</strong> 30091012312
+          </p>
+          <p class="contact-item">
+            <strong>Bogotá D.C., Colombia</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h3 class="column-title">ACERCA DE SamanTails</h3>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Sobre Samantails</a></li>
+            <li><a href="#" class="footer-link">Servicios</a></li>
+            <li><a href="#" class="footer-link">Blog</a></li>
+            <li><a href="#" class="footer-link">Términos y condiciones</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="column-title">LINKS DE INTERES</h3>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+            <li><a href="#" class="footer-link">Política de Privacidad</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="column-title">NUESTRAS TIENDAS</h3>
+          <ul class="footer-links">
+            <li>
+              <strong>Medellín:</strong><br>
+              KM 2,5 via
+            </li>
+            <li>
+              <strong>Soacha:</strong><br>
+              Carrera 145 # 22-91, Bogotá
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="column-title">INFORMACIÓN</h3>
+          <ul class="footer-links">
+            <li>
+              <strong>Teléfono:</strong><br>
+              30091012312
+            </li>
+            <li>
+              <strong>Bogotá D.C., Colombia</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 SamanTails. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>

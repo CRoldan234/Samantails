@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="logo">
+      <img src="assets/img/Samantha.png" alt="Logo" class="imgsamantha"/>
+    </div>
+
+    @if (errorLogin) {
+      <div class="error-message">{{ errorLogin }}</div>
+    }
+
+    <div class="input-name-space">
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <input
+          matInput
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Usuario"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="input-name-space">
+      <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Contraseña"
+          type="password"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="remember-forgot">
+      <label><input type="checkbox" /> Recordar usuario.</label>
+      <a href="#">¿Olvidaste la contraseña?</a>
+    </div>
+
+    <button type="submit" class="btn">Iniciar sesión</button>
+    <div class="register-link">
+      <p>No tienes una cuenta? <a href="#" (click)="switchToRegister($event)">Registrar</a></p>
+    </div>
+  </form>
+
+  <hr class="login-container" />
+
+</div>

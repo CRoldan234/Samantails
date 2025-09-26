@@ -1,0 +1,10 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content 
+    class="content mat-elevation-z4" 
+    [ngClass]="{'fully-collapsed-nav': isFullyCollapsed}">
+
+    <app-nav-bar></app-nav-bar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

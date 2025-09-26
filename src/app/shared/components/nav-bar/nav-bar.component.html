@@ -1,0 +1,122 @@
+<header class="header">
+    <div class="logo-nav">
+        <img class="img-lex" src="assets/img/logo.png" alt="Logo de la marca">
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li>
+                <a class="btn" title="Home" [class.active]="isActive('/home')">
+                    <button (click)="navigateToHome()">
+                        <img class="img-alex" 
+                             [src]="isActive('/home') ? 'assets/img/home.png' : 'assets/img/home.png'" 
+                             alt="Home">
+                    </button>
+                    <h1 class="title">Home</h1>
+                </a>
+            </li>
+            <li>
+                <a class="btn" title="AI" [class.active]="isActive('/services')">
+                    <button (click)="navigateToSe()">
+                        <img class="img-alex" 
+                             [src]="isActive('/services') ? 'assets/img/services.png' : 'assets/img/services.png'" 
+                             alt="AI">
+                    </button>
+                    <h1 class="title">Services</h1>
+                </a>
+            </li>
+            <li>
+                <a class="btn" title="AI" [class.active]="isActive('/about-us')">
+                    <button (click)="navigateToAb()">
+                        <img class="img-alex" 
+                             [src]="isActive('/about-us') ? 'assets/img/info.png' : 'assets/img/info.png'" 
+                             alt="AI">
+                    </button>
+                    <h1 class="title">About us</h1>
+                </a>
+            </li>
+        </ul>       
+    </nav>
+    <div class="logo">
+        <p class="user-name">{{ userFullName }}</p>
+<div class="user-menu-container">
+        <div class="user" (click)="toggleUserMenu()">
+            <img class="user-img" [src]="profileImage()" alt="Foto de perfil">
+        </div>
+        
+        <!-- Menú solo visible cuando está logueado -->
+        <div class="user-menu" *ngIf="isUserMenuOpen() && isLoggedIn">
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Cerrar sesión</span>
+            </button>
+        </div>
+
+        <!-- Mensaje cuando no está logueado -->
+        <div class="user-menu" *ngIf="isUserMenuOpen() && !isLoggedIn">
+            <button mat-menu-item (click)="openRegisterModal()">
+                <mat-icon>person_add</mat-icon>
+                <span>Registrarse</span>
+            </button>
+            <button mat-menu-item (click)="openLoginModal()">
+                <mat-icon>login</mat-icon>
+                <span>Iniciar Sesión</span>
+            </button>
+        </div>
+    </div>
+        <div class="cart-container" (click)="toggleCart()">
+            <div class="cart-icon">
+                <img src="assets/icon/cart.ico" alt="Carrito de compras">
+                <span class="cart-badge" *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</span>
+            </div>
+            <span class="cart-text">Carrito</span>
+        </div>
+    </div>   
+</header>
+<div class="cart-modal-overlay" *ngIf="isCartOpen" (click)="closeCart()">
+    <div class="cart-modal" (click)="$event.stopPropagation()">
+        <div class="cart-header">
+            <h2>Tu Carrito de Compras</h2>
+            <button class="close-btn" (click)="closeCart()">×</button>
+        </div>
+
+        <div class="cart-content">
+            <div class="cart-items" *ngIf="cartItemsCount > 0">
+                    <div class="cart-item" *ngFor="let item of getCartItems()">
+                        <img [src]="item.image" [alt]="item.name" class="item-image">
+                        <div class="item-details">
+                            <h4>{{ item.name }}</h4>
+                            <p class="item-price">{{ item.price | currency:'COP':'symbol':'1.0-0' }}</p>
+                            <div class="item-quantity">
+                                <button class="quantity-btn" (click)="decreaseQuantity(item)">-</button>
+                                <span>{{ item.quantity }}</span>
+                                <button class="quantity-btn" (click)="increaseQuantity(item)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-btn" (click)="removeFromCart(item.id)">×</button>
+                    </div>
+                </div>
+                <div class="empty-cart" *ngIf="cartItemsCount === 0">
+                    <h3>Aún no has añadido productos o servicios</h3>
+                    <p>Explora nuestro catálogo y añade items a tu carrito</p>
+                    <button class="continue-shopping-btn" (click)="navigateToSe()">
+                        Continuar Comprando
+                    </button>
+                </div>
+                <div class="empty-cart" *ngIf="cartItemsCount > 0">
+                    <button class="continue-shopping-btn" (click)="navigateToSe()">
+                        Comprar
+                    </button>
+                </div>
+        </div>
+
+        <div class="cart-footer" *ngIf="cartItems.length > 0">
+            <div class="cart-total">
+                <strong>Total: {{ getCartTotal() | currency }}</strong>
+            </div>
+            <button class="checkout-btn" (click)="proceedToCheckout()">
+                Proceder al Pago
+            </button>
+        </div>
+    </div>
+</div>
+<hr />
