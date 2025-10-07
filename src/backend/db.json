@@ -1,0 +1,25 @@
+{
+  "servicios": [
+
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "usuario": "admin",
+      "email": "admin@empresa.com",
+      "password": "1234"
+    },
+    {
+      "id": "a96d",
+      "usuario": "Monica",
+      "email": "moni@gmail.com",
+      "password": "moni123"
+    },
+    {
+      "id": "81f7",
+      "usuario": "monica",
+      "email": "moni@gmail.com",
+      "password": "moni123"
+    }
+  ]
+}

@@ -44,7 +44,6 @@ export class NewsCarouselDynamicComponent implements OnInit, AfterViewInit, OnDe
     }
   ];
 
-  // Marcas para la sección cuadrada
   public brands = [
     {
       name: 'NutriPet',

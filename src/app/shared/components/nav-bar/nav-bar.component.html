@@ -37,40 +37,40 @@
         </ul>       
     </nav>
     <div class="logo">
-        <p class="user-name">{{ userFullName }}</p>
-<div class="user-menu-container">
+    <p class="user-name">{{ userFullName() }}</p>
+
+    <div class="user-menu-container">
         <div class="user" (click)="toggleUserMenu()">
-            <img class="user-img" [src]="profileImage()" alt="Foto de perfil">
-        </div>
-        
-        <!-- Menú solo visible cuando está logueado -->
-        <div class="user-menu" *ngIf="isUserMenuOpen() && isLoggedIn">
-            <button mat-menu-item (click)="logout()">
-                <mat-icon>logout</mat-icon>
-                <span>Cerrar sesión</span>
-            </button>
+        <img class="user-img" [src]="profileImage()" alt="Foto de perfil">
         </div>
 
-        <!-- Mensaje cuando no está logueado -->
-        <div class="user-menu" *ngIf="isUserMenuOpen() && !isLoggedIn">
-            <button mat-menu-item (click)="openRegisterModal()">
-                <mat-icon>person_add</mat-icon>
-                <span>Registrarse</span>
-            </button>
-            <button mat-menu-item (click)="openLoginModal()">
-                <mat-icon>login</mat-icon>
-                <span>Iniciar Sesión</span>
-            </button>
+        <div class="user-menu" *ngIf="isUserMenuOpen() && isLoggedIn()">
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar sesión</span>
+        </button>
+        </div>
+
+        <div class="user-menu" *ngIf="isUserMenuOpen() && !isLoggedIn()">
+        <button mat-menu-item (click)="openRegisterModal()">
+            <mat-icon>person_add</mat-icon>
+            <span>Registrarse</span>
+        </button>
+        <button mat-menu-item (click)="openLoginModal()">
+            <mat-icon>login</mat-icon>
+            <span>Iniciar Sesión</span>
+        </button>
         </div>
     </div>
-        <div class="cart-container" (click)="toggleCart()">
-            <div class="cart-icon">
-                <img src="assets/icon/cart.ico" alt="Carrito de compras">
-                <span class="cart-badge" *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</span>
-            </div>
-            <span class="cart-text">Carrito</span>
+
+    <div class="cart-container" (click)="toggleCart()">
+        <div class="cart-icon">
+        <img src="assets/icon/cart.ico" alt="Carrito de compras">
+        <span class="cart-badge" *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</span>
         </div>
-    </div>   
+        <span class="cart-text">Carrito</span>
+    </div>
+    </div>
 </header>
 <div class="cart-modal-overlay" *ngIf="isCartOpen" (click)="closeCart()">
     <div class="cart-modal" (click)="$event.stopPropagation()">

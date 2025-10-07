@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ApiService } from '../../../shared/services/api.service';
 
 
 
@@ -34,9 +35,12 @@ export class RegisterComponent {
   userForm: FormGroup;
   verificationCode = new FormControl('', [Validators.required]);
   needConfirmation = false;
+  registerSuccess = false;
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
+    private apiService: ApiService,
     private dialogRef: MatDialogRef<RegisterComponent>
   ) {
     this.userForm = this.fb.group({
@@ -48,17 +52,30 @@ export class RegisterComponent {
 
   createUser(): void {
     if (this.userForm.valid) {
-      console.log('Register data:', this.userForm.value);
-      this.needConfirmation = true;
-      // Aquí va tu lógica de registro
-    }
-  }
+      const newUser = {
+        usuario: this.userForm.value.username,
+        email: this.userForm.value.email,
+        password: this.userForm.value.password
+      };
 
-  confirmCreatedUser(): void {
-    if (this.verificationCode.valid) {
-      console.log('Verification code:', this.verificationCode.value);
-      // Lógica de verificación
-      this.dialogRef.close(); // Cerrar modal después de registro exitoso
+      // 🔹 Verificamos si el correo ya existe
+      this.apiService.login(newUser.usuario, newUser.password).subscribe(existingUsers => {
+        if (existingUsers.length > 0) {
+          this.errorMessage = '⚠️ Este usuario ya está registrado.';
+        } else {
+          this.apiService.registerUser(newUser).subscribe({
+            next: () => {
+              this.registerSuccess = true;
+              alert('✅ Registro exitoso. Ya puedes iniciar sesión.');
+              this.dialogRef.close('switch-to-login'); // opcional, abre login automáticamente
+            },
+            error: (err) => {
+              console.error('Error al registrar usuario:', err);
+              this.errorMessage = '❌ Error al registrar el usuario.';
+            }
+          });
+        }
+      });
     }
   }
 
@@ -68,7 +85,6 @@ export class RegisterComponent {
   }
 
   signInWithGoogle(): void {
-    console.log('Google sign in');
-    // Lógica de Google Sign In
+    alert('🔑 Login con Google');
   }
 }

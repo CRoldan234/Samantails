@@ -23,7 +23,6 @@ interface Product {
 })
 export class ServicesComponent implements OnInit {
   
-  // Datos de ejemplo para productos y servicios
   products: Product[] = [
     {
       id: '1',

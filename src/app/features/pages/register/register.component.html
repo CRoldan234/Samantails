@@ -4,26 +4,26 @@
         <img src="assets/img/Samantha.png" alt="Logo" class="imgsamantha"/>
       </div>
   
-      <div class="input-name-space">
-        <mat-form-field class="example-full-width">
-          <mat-label>Nombre y apellido</mat-label>
-          <input matInput formControlName="username" placeholder="Nombre y apellido" />
-        </mat-form-field>
-      </div>
+  <div class="input-name-space">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre y apellido</mat-label>
+      <input matInput formControlName="username" placeholder="Nombre y apellido" />
+    </mat-form-field>
+  </div>
   
-      <div class="input-name-space">
-        <mat-form-field class="example-full-width">
-          <mat-label>Correo electrónico de trabajo</mat-label>
-          <input matInput formControlName="email" placeholder="Correo electrónico de trabajo" />
-        </mat-form-field>
-      </div>
+    <div class="input-name-space">
+      <mat-form-field class="example-full-width">
+        <mat-label>Correo electrónico de trabajo</mat-label>
+        <input matInput formControlName="email" placeholder="Correo electrónico de trabajo" />
+      </mat-form-field>
+    </div>
   
-      <div class="input-name-space">
-        <mat-form-field class="example-full-width">
-          <mat-label>Elige una contraseña</mat-label>
-          <input matInput formControlName="password" placeholder="Elige una contraseña" type="password" />
-        </mat-form-field>
-      </div>
+    <div class="input-name-space">
+      <mat-form-field class="example-full-width">
+        <mat-label>Elige una contraseña</mat-label>
+        <input matInput formControlName="password" placeholder="Elige una contraseña" type="password" />
+      </mat-form-field>
+    </div>
   
       <div class="remember-forgot">
         <label><input type="checkbox" />Recordar usuario.</label>
@@ -44,19 +44,5 @@
       </div>
     </form>
   
-    <div class="wrapper-two" *ngIf="needConfirmation">
-      <form (ngSubmit)="confirmCreatedUser()">
-        <h4 class="input-description">Ingresa el código de verificación enviado a tu email</h4>
-        <div class="input-verification">
-          <mat-form-field class="example-full-width">
-            <mat-label>Código de Verificación</mat-label>
-            <input matInput [formControl]="verificationCode" placeholder="Código" />
-          </mat-form-field>
-        </div>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!verificationCode.valid">
-          Verificar
-        </button>
-      </form>
-    </div>
   </div>
   

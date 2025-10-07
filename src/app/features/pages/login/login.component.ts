@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ApiService } from '../../../shared/services/api.service';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +31,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
+    private apiService: ApiService,
+    private authService: AuthService,
     private dialogRef: MatDialogRef<LoginComponent>
   ) {
 
@@ -36,12 +40,17 @@ export class LoginComponent {
 
   // Simulación de login
   onSubmit() {
-    if (this.username === 'admin' && this.password === '1234') {
-      alert('✅ Login exitoso!');
-      this.errorLogin = '';
-    } else {
-      this.errorLogin = '❌ Usuario o contraseña incorrectos';
-    }
+    this.apiService.login(this.username, this.password).subscribe((users) => {
+      if (users.length > 0) {
+        const user = users[0];
+        this.authService.login(user.usuario);
+        alert('✅ Login exitoso!');
+        this.errorLogin = '';
+        this.dialogRef.close();
+      } else {
+        this.errorLogin = '❌ Usuario o contraseña incorrectos';
+      }
+    });
   }
 
   // Para botones sociales

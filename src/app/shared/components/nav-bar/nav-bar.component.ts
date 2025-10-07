@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, HostListener, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, ElementRef, HostListener, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subject, Subscription, takeUntil } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { CartItem, CartService } from '../../services/cart.service';
 import { RegisterComponent } from '../../../features/pages/register/register.component';
 import { LoginComponent } from '../../../features/pages/login/login.component';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -23,20 +24,24 @@ export class NavBarComponent implements OnInit, OnDestroy {
   imgSrc: string = "assets/img/Alex.png";
   boardImgSrc: string = "assets/img/Board.png";
   isBoardModalVisible: boolean = false;
-  userFullName: string = 'Invitado';
-  profileImage = signal<string>("assets/img/user.png");
+  userFullName = computed(() => this.authService.userFullName());
+  profileImage = computed(() => this.authService.profileImage());
   private defaultImage = "assets/img/Men.jpg";
   private destroy$ = new Subject<void>();
   isUserMenuOpen = signal(false);
   imageTimestamp = signal<number>(Date.now());
-  isLoggedIn = false;
+  isLoggedIn = computed(() => this.authService.isLoggedIn());
 
   isCartOpen = false;
   cartItems: any[] = [];
   cartItemsCount = 0;
   cartSubscription!: Subscription;
 
-  constructor(private eRef: ElementRef, public router: Router, private dialog: MatDialog, private cartService: CartService
+  constructor(private authService: AuthService, 
+    private eRef: ElementRef, 
+    public router: Router, 
+    private dialog: MatDialog, 
+    private cartService: CartService
 
 ) {
     effect(() => {
@@ -203,9 +208,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
     return current.includes(route);
   }
 
-logout(): void {
-
-}
+  logout(): void {
+    this.authService.logout();
+    this.isUserMenuOpen.set(false);
+    this.router.navigate(['/home']);
+  }
 
  
   toggleUserMenu() {
