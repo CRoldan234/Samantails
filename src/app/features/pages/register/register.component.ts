@@ -1,21 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ApiService } from '../../../shared/services/api.service';
-
-
-
-
-
-
-
-
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -33,14 +23,13 @@ import { ApiService } from '../../../shared/services/api.service';
 })
 export class RegisterComponent {
   userForm: FormGroup;
-  verificationCode = new FormControl('', [Validators.required]);
+  errorMessage = '';
   needConfirmation = false;
   registerSuccess = false;
-  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService,
+    private authService: AuthService,
     private dialogRef: MatDialogRef<RegisterComponent>
   ) {
     this.userForm = this.fb.group({
@@ -51,32 +40,20 @@ export class RegisterComponent {
   }
 
   createUser(): void {
-    if (this.userForm.valid) {
-      const newUser = {
-        usuario: this.userForm.value.username,
-        email: this.userForm.value.email,
-        password: this.userForm.value.password
-      };
+    if (!this.userForm.valid) return;
 
-      // 🔹 Verificamos si el correo ya existe
-      this.apiService.login(newUser.usuario, newUser.password).subscribe(existingUsers => {
-        if (existingUsers.length > 0) {
-          this.errorMessage = '⚠️ Este usuario ya está registrado.';
-        } else {
-          this.apiService.registerUser(newUser).subscribe({
-            next: () => {
-              this.registerSuccess = true;
-              alert('✅ Registro exitoso. Ya puedes iniciar sesión.');
-              this.dialogRef.close('switch-to-login'); // opcional, abre login automáticamente
-            },
-            error: (err) => {
-              console.error('Error al registrar usuario:', err);
-              this.errorMessage = '❌ Error al registrar el usuario.';
-            }
-          });
-        }
-      });
-    }
+    this.errorMessage = '';
+    this.authService.register(
+      this.userForm.value.username,
+      this.userForm.value.email,
+      this.userForm.value.password,
+      () => {
+        this.dialogRef.close('login-success');
+      },
+      (msg) => {
+        this.errorMessage = msg;
+      }
+    );
   }
 
   switchToLogin(event: Event): void {
@@ -85,6 +62,6 @@ export class RegisterComponent {
   }
 
   signInWithGoogle(): void {
-    alert('🔑 Login con Google');
+    alert('Iniciar sesión con Google');
   }
 }
