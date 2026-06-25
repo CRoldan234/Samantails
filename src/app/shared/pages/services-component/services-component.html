@@ -1,144 +1,19 @@
-<hr class="section-divider">
-
-<div class="catalog-container">
-  <div class="catalog-header">
-    <h1 class="title">Nuestros Productos y Servicios</h1>
-    <p class="summary">Descubre la mejor calidad para el cuidado de tus mascotas</p>
-  </div>
-
-  <div class="filters-container">
-    <div class="filter-buttons">
-      <button 
-        *ngFor="let category of categories" 
-        class="filter-btn" 
-        [class.active]="selectedCategory === category"
-        (click)="filterByCategory(category)">
-        {{ category | titlecase }}
-      </button>
-    </div>
-    
-    <div class="results-count">
-      {{ filteredProducts.length }} {{ filteredProducts.length === 1 ? 'resultado' : 'resultados' }}
-    </div>
-  </div>
-
-  <div class="products-grid">
-    <div *ngFor="let product of filteredProducts" class="product-card">
-      <div class="product-image">
-        <img [src]="product.image" [alt]="product.name">
-        <span class="product-type-badge" [class.service]="product.type === 'service'">
-          {{ product.type === 'service' ? 'Servicio' : 'Producto' }}
-        </span>
-        <div class="product-rating">
-          ⭐ {{ product.rating }}
-        </div>
-      </div>
-
-      <div class="product-info">
-        <h3 class="product-name">{{ product.name }}</h3>
-        <p class="product-description">{{ product.description }}</p>
-        
-        <div class="product-category">
-          <span class="category-tag">{{ product.category }}</span>
-        </div>
-
-        <div class="product-price">
-          {{ product.price | currency:'COP':'symbol':'1.0-0' }}
-        </div>
-
-        <div class="addcart">
-          <button 
-            class="add-to-cart-btn"
-            [attr.data-product-id]="product.id"
-            (click)="addToCart(product)">
-            Añadir al Carrito
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mensaje cuando no hay resultados -->
-  <div *ngIf="filteredProducts.length === 0" class="no-results">
-    <div class="no-results-icon">😔</div>
-    <h3>No encontramos productos en esta categoría</h3>
-    <p>Intenta con otra categoría o explora todas nuestras opciones</p>
-    <button class="view-all-btn" (click)="filterByCategory('todos')">
-      Ver Todos los Productos
-    </button>
-  </div>
-</div>
+<app-news-carousel-dynamic></app-news-carousel-dynamic>
 
 <hr class="section-divider">
 
+<app-products-grid
+  [products]="products"
+  [categories]="categories"
+  [selectedCategory]="selectedCategory"
+  [filteredProducts]="filteredProducts"
+  [categoryIcons]="categoryIconList"
+  (filterChange)="filterByCategory($event)"
+  (addToCart)="addToCart($event)">
+</app-products-grid>
 
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-main">
-      <div class="footer-logo-section">
-        <div class="footer-logo">
-          <img src="assets/img/Samantha.png" alt="SamanTails Logo" class="logo">
-        </div>
-        <div class="contact-info">
-          <p class="contact-item">
-            <strong>Teléfono:</strong> 30091012312
-          </p>
-          <p class="contact-item">
-            <strong>Bogotá D.C., Colombia</strong>
-          </p>
-        </div>
-      </div>
+<hr class="section-divider">
 
-      <div class="footer-columns">
-        <div class="footer-column">
-          <h3 class="column-title">ACERCA DE SamanTails</h3>
-          <ul class="footer-links">
-            <li><a href="#" class="footer-link">Sobre Samantails</a></li>
-            <li><a href="#" class="footer-link">Servicios</a></li>
-            <li><a href="#" class="footer-link">Blog</a></li>
-            <li><a href="#" class="footer-link">Términos y condiciones</a></li>
-          </ul>
-        </div>
+<app-brands-section [brands]="brandList"></app-brands-section>
 
-        <div class="footer-column">
-          <h3 class="column-title">LINKS DE INTERES</h3>
-          <ul class="footer-links">
-            <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
-            <li><a href="#" class="footer-link">Política de Privacidad</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h3 class="column-title">NUESTRAS TIENDAS</h3>
-          <ul class="footer-links">
-            <li>
-              <strong>Medellín:</strong><br>
-              KM 2,5 via
-            </li>
-            <li>
-              <strong>Soacha:</strong><br>
-              Carrera 145 # 22-91, Bogotá
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h3 class="column-title">INFORMACIÓN</h3>
-          <ul class="footer-links">
-            <li>
-              <strong>Teléfono:</strong><br>
-              30091012312
-            </li>
-            <li>
-              <strong>Bogotá D.C., Colombia</strong>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2024 SamanTails. Todos los derechos reservados.</p>
-    </div>
-  </div>
-</footer>
+<app-footer></app-footer>

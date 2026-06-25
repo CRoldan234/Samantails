@@ -3,7 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription, takeUntil } from 'rxjs';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CartItem, CartService } from '../../services/cart.service';
 import { RegisterComponent } from '../../../features/pages/register/register.component';
@@ -12,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-nav-bar',
-    imports: [MatIconModule, CommonModule],
+    imports: [CommonModule],
     templateUrl: './nav-bar.component.html',
     styleUrl: './nav-bar.component.scss'
 })

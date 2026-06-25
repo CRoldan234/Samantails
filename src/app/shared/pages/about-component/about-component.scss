@@ -1,227 +1,281 @@
-:root {
- 
- 
-  --first-color: hsl(38, 92%, 58%);
-  --first-color-light: hsl(38, 100%, 78%);
-  --first-color-alt: hsl(32, 75%, 50%);
-  --second-color: hsl(195, 75%, 52%);
-  --blue-color: #021E6D;
-  --white-color: hsl(212, 4%, 95%);
-  --body-color: hsl(212, 42%, 15%);
-  --container-color: hsl(212, 42%, 20%);
-
- 
- 
-  font-family: 'Nunito Sans', sans-serif;
-  --h2-font-size: 0.9rem;
-  --normal-font-size: 0.9rem;
+.about-hero {
+  background: linear-gradient(135deg, #4E342E, #5C4033, #8D6E63);
+  text-align: center;
+  padding: 80px 20px 40px;
+  position: relative;
+  overflow: hidden;
 }
 
-.company-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0px 20px;
-    text-align: center;
+.about-hero-content {
+  position: relative;
+  z-index: 1;
 }
 
-.title-news {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #5C4033;
-  margin: 0px 0px 0px 50px;
+.about-badge {
+  display: inline-block;
+  background: rgba(232, 164, 64, 0.2);
+  color: #F4C46A;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border: 1px solid rgba(232, 164, 64, 0.25);
 }
 
-.title { 
-   margin: 35px 0px 35px 0px;
+.about-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 10px;
+  letter-spacing: -1px;
+
+  span { color: #E8A440; }
 }
 
-.paragraphs-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 800px;
-    margin: 0 auto;
+.about-hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-style: italic;
 }
 
-.summary {
-    text-align: justify; 
-    text-align-last: left;
-    font-size: 1.1rem;
-    color: #6c757d;
-    margin: 0;
-    gap: 20px;
+.about-paws {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: 30px;
+  margin-top: 30px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.section-divider {
-  margin: 35px 0;
-  border: none;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #5C4033, transparent);
-}
-
-
-
-/* Footer */
-.footer {
-    background: #6c757d;
-    color: white;
-    padding: 40px 20px;
-    margin-top: 20px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  max-width: 90%;
+.about-story {
+  padding: 80px 40px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.footer-main {
-  display: grid;
-  grid-template-columns: 300px 1fr;
+.about-grid {
+  display: flex;
+  align-items: center;
   gap: 60px;
-  margin-bottom: 40px;
 }
 
-.footer-logo-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.about-text {
+  flex: 1;
+
+  p {
+    font-size: 0.95rem;
+    color: #8D6E63;
+    line-height: 1.7;
+    margin: 0 0 16px;
+  }
+
+  strong {
+    color: #4E342E;
+  }
 }
 
-.footer-logo img {
-  height: 145px;
-  width: auto;
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.contact-item {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #ffff;
-}
-
-.contact-item strong {
-  color: #ffff;
-}
-
-.footer-columns {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-}
-
-.footer-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.column-title {
-  font-size: 1rem;
+.section-tag {
+  display: inline-block;
+  background: rgba(232, 164, 64, 0.12);
+  color: #E8A440;
+  padding: 5px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #ffff;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 2px solid #5C4033;
-  padding-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.about-text h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #4E342E;
+  margin: 0 0 18px;
+  letter-spacing: -0.5px;
+
+  span { color: #E8A440; }
+}
+
+.about-stats {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 28px;
+  margin-top: 28px;
 }
 
-.footer-links li {
-  line-height: 1.5;
+.about-stat {
+  text-align: center;
+  background: #FFFBF5;
+  padding: 16px 22px;
+  border-radius: 14px;
+  border: 2px solid #FEF0E6;
 }
 
-.footer-link {
-  color: #ffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 0.95rem;
+.about-stat-num {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #E8A440;
 }
 
-.footer-link:hover {
-  color: rgb(176 176 176);
-}
-
-.footer-links strong {
-  color: #ffff;
+.about-stat-label {
+  font-size: 0.78rem;
+  color: #8D6E63;
   font-weight: 600;
 }
 
-.footer-bottom {
-  border-top: 2px solid #5C4033;
-  padding-top: 20px;
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 380px;
+    width: 100%;
+    filter: drop-shadow(0 10px 30px rgba(92, 64, 51, 0.15));
+  }
+}
+
+.about-values {
+  padding: 60px 40px;
+  background: linear-gradient(180deg, #FFF8F0, #FFF5EC, white);
+}
+
+.values-header {
   text-align: center;
-  margin-top: 38px;
+  margin-bottom: 40px;
+
+  h2 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #4E342E;
+    margin: 0;
+    letter-spacing: -0.5px;
+
+    span { color: #E8A440; }
+  }
 }
 
-.footer-bottom p {
+.values-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px 24px;
+  text-align: center;
+  border: 2px solid #FEF0E6;
+  box-shadow: 0 6px 25px rgba(92, 64, 51, 0.05);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 35px rgba(92, 64, 51, 0.1);
+    border-color: #E8A440;
+  }
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4E342E;
+  margin: 0 0 10px;
+}
+
+.value-card p {
+  font-size: 0.88rem;
+  color: #A1887F;
+  line-height: 1.6;
   margin: 0;
-  color: #ffff;
-  font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .footer-main {
-    grid-template-columns: 250px 1fr;
-    gap: 40px;
-  }
-  
-  .footer-columns {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
+.about-cta {
+  padding: 70px 40px;
+  background: linear-gradient(135deg, #4E342E, #5C4033);
 }
 
-@media (max-width: 768px) {
-  .footer-main {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .footer-logo-section {
-    text-align: center;
-    align-items: center;
-  }
-  
-  .footer-columns {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .footer-column {
-    text-align: center;
-  }
-}
+.cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 
-@media (max-width: 480px) {
-  .footer {
-    padding: 40px 15px 20px;
+  h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 10px;
+    letter-spacing: -0.3px;
   }
-  
-  .footer-main {
-    gap: 30px;
-  }
-  
-  .column-title {
+
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 28px;
     font-size: 1rem;
   }
-  
-  .footer-link {
-    font-size: 0.9rem;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.cta-btn {
+  padding: 14px 30px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &.primary {
+    background: linear-gradient(135deg, #E8A440, #F4C46A);
+    color: #3E2723;
+    box-shadow: 0 4px 18px rgba(232, 164, 64, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(232, 164, 64, 0.4);
+    }
+  }
+
+  &.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .about-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .values-cards {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,1 +1,147 @@
-<app-news-carousel-dynamic></app-news-carousel-dynamic>
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-badge">Clinica Veterinaria</span>
+      <h1>Cuidamos a tus mascotas<br>como <span class="highlight">familia</span></h1>
+      <p class="hero-subtitle">
+        Atencion veterinaria integral con los mas altos estandares de calidad. 
+        Consultas, peluqueria, guarderia y todo lo que tu companero necesita.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary" (click)="navigateToServices()">Ver Servicios</button>
+        <button class="btn-secondary" (click)="navigateToAbout()">Conocenos</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">+500</span>
+          <span class="stat-label">Pacientes Felices</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Anos de Experiencia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">Emergencias</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="assets/img/Samantha.png" alt="SamanTails Veterinaria" />
+    </div>
+  </div>
+</section>
+
+<section class="services-preview">
+  <div class="section-header">
+    <h2>Nuestros Servicios</h2>
+    <p>Todo lo que tu mascota necesita en un solo lugar</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <img src="assets/img/services.png" alt="Consulta" />
+      </div>
+      <h3>Consulta Veterinaria</h3>
+      <p>Revision general, diagnostico y tratamiento con medicos especializados.</p>
+      <a routerLink="/services" class="service-link">Ver mas →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <img src="assets/img/services.png" alt="Peluqueria" />
+      </div>
+      <h3>Peluqueria Canina</h3>
+      <p>Bano, corte de pelo, limpieza dental y cuidado estetico completo.</p>
+      <a routerLink="/services" class="service-link">Ver mas →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <img src="assets/img/alimento1.png" alt="Alimentos" />
+      </div>
+      <h3>Alimentos Premium</h3>
+      <p>Las mejores marcas de alimento balanceado para todas las razas y edades.</p>
+      <a routerLink="/services" class="service-link">Ver mas →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <img src="assets/img/services.png" alt="Guarderia" />
+      </div>
+      <h3>Guarderia</h3>
+      <p>Cuidado diurno con actividades recreativas y supervision constante.</p>
+      <a routerLink="/services" class="service-link">Ver mas →</a>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-content">
+    <div class="features-image">
+      <img src="assets/img/SamanthaIcon.png" alt="Por que elegirnos" />
+    </div>
+    <div class="features-text">
+      <span class="section-tag">Por que elegirnos</span>
+      <h2>Comprometidos con la salud<br>de tu mejor amigo</h2>
+      <p>
+        En <strong>SamanTails</strong> entendemos que tu mascota es parte de tu familia. 
+        Por eso ofrecemos atencion personalizada con los mas altos estandares de calidad 
+        y un equipo de profesionales apasionados por el bienestar animal.
+      </p>
+      <ul class="features-list">
+        <li>
+          <span class="check-icon">✓</span>
+          <div>
+            <strong>Profesionales Certificados</strong>
+            <p>Medicos veterinarios con amplia experiencia y formacion continua.</p>
+          </div>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <div>
+            <strong>Equipamiento Moderno</strong>
+            <p>Tecnologia de punta para diagnostico y tratamiento.</p>
+          </div>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <div>
+            <strong>Productos Garantizados</strong>
+            <p>Solo trabajamos con marcas reconocidas y de calidad comprobada.</p>
+          </div>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <div>
+            <strong>Atencion Personalizada</strong>
+            <p>Cada mascota recibe un plan de cuidado adaptado a sus necesidades.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="brands-strip">
+  <h2>Marcas de Confianza</h2>
+  <div class="brands-logos">
+    <img src="assets/img/marca1.png" alt="NutriPet" />
+    <img src="assets/img/marca2.png" alt="VetCare" />
+    <img src="assets/img/marca3.png" alt="PetComfort" />
+    <img src="assets/img/marca4.png" alt="DogTrain" />
+    <img src="assets/img/marca5.png" alt="CatClean" />
+    <img src="assets/img/marca6.png" alt="PetSpa" />
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-content">
+    <h2>Tu mascota merece lo mejor</h2>
+    <p>Agenda una cita hoy y descubre por que somos la veterinaria de confianza para cientos de familias.</p>
+    <div class="cta-buttons">
+      <button class="btn-primary" (click)="navigateToServices()">Explorar Productos</button>
+      <button class="btn-outline" (click)="navigateToAbout()">Contactanos</button>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
