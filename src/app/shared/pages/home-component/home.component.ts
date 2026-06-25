@@ -6,11 +6,10 @@ import { NewsCarouselDynamicComponent } from './news-carousel-dynamic/news-carou
 
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, MatSidenavModule, NewsCarouselDynamicComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [CommonModule, MatSidenavModule, NewsCarouselDynamicComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   

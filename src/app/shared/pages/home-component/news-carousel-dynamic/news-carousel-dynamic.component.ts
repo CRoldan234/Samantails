@@ -8,11 +8,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 @Component({
-  selector: 'app-news-carousel-dynamic',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './news-carousel-dynamic.component.html',
-  styleUrls: ['./news-carousel-dynamic.component.scss']
+    selector: 'app-news-carousel-dynamic',
+    imports: [CommonModule],
+    templateUrl: './news-carousel-dynamic.component.html',
+    styleUrls: ['./news-carousel-dynamic.component.scss']
 })
 export class NewsCarouselDynamicComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   @Input() carouselTitle: string = 'Productos Destacados';

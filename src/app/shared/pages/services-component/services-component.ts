@@ -4,11 +4,10 @@ import { CartItem, CartService } from '../../services/cart.service';
 import { ApiService, Product } from '../../services/api.service';
 
 @Component({
-  selector: 'app-services-component',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './services-component.html',
-  styleUrls: ['./services-component.scss']
+    selector: 'app-services-component',
+    imports: [CommonModule],
+    templateUrl: './services-component.html',
+    styleUrls: ['./services-component.scss']
 })
 export class ServicesComponent implements OnInit {
   products: Product[] = [];

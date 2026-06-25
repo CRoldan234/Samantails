@@ -8,11 +8,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 @Component({
-  selector: 'app-about-component',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './about-component.html',
-  styleUrls: ['./about-component.scss']
+    selector: 'app-about-component',
+    imports: [CommonModule],
+    templateUrl: './about-component.html',
+    styleUrls: ['./about-component.scss']
 })
 export class AboutComponent {
 

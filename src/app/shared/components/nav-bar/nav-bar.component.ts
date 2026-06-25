@@ -11,11 +11,10 @@ import { LoginComponent } from '../../../features/pages/login/login.component';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-nav-bar',
-  standalone: true,
-  imports: [MatIconModule, CommonModule],
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+    selector: 'app-nav-bar',
+    imports: [MatIconModule, CommonModule],
+    templateUrl: './nav-bar.component.html',
+    styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   userFullName = computed(() => this.authService.userFullName());

@@ -7,11 +7,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @Component({
-  selector: 'app-layout-principal',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, NavBarComponent, MatSidenavModule],
-  templateUrl: './layout-principal.component.html',
-  styleUrl: './layout-principal.component.scss'
+    selector: 'app-layout-principal',
+    imports: [CommonModule, RouterOutlet, NavBarComponent, MatSidenavModule],
+    templateUrl: './layout-principal.component.html',
+    styleUrl: './layout-principal.component.scss'
 })
 export class LayoutPrincipalComponent {
   title = 'lexpad-front-end';
